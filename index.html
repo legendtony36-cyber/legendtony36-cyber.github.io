@@ -356,30 +356,29 @@
         /* ABOUT */
         .about {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
+            grid-template-columns: 1.05fr 1.35fr;
+            gap: clamp(40px, 4vw, 80px);
             align-items: center;
         }
 
         .about-image-wrapper {
             position: relative;
-            width: min(420px, 100%);
+            width: min(460px, 100%);
             margin: 0 auto;
-            padding: 14px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(214, 168, 79, 0.8), rgba(214, 168, 79, 0.2) 35%, rgba(10, 10, 10, 0.9) 70%);
-            border: 1px solid rgba(214, 168, 79, 0.8);
-            box-shadow: 0 0 0 1px rgba(214, 168, 79, 0.5), 0 0 30px rgba(214, 168, 79, 0.18), 0 20px 45px rgba(0, 0, 0, 0.35);
+            padding: 12px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(197, 34, 34, 0.95);
+            box-shadow: 0 0 0 1px rgba(197, 34, 34, 0.35), 0 0 30px rgba(197, 34, 34, 0.22), 0 20px 50px rgba(0, 0, 0, 0.35);
             aspect-ratio: 1;
             overflow: hidden;
+            border-radius: 0;
         }
 
         .about-image-wrapper::before {
             content: '';
             position: absolute;
-            inset: 8px;
-            border-radius: 50%;
-            border: 1px solid rgba(214, 168, 79, 0.6);
+            inset: 10px;
+            border: 1px solid rgba(197, 34, 34, 0.7);
             pointer-events: none;
             z-index: 2;
         }
@@ -388,38 +387,100 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
             display: block;
+            border-radius: 0;
             transition: transform 0.6s ease, filter 0.6s ease;
-            filter: saturate(1.06) contrast(1.04);
+            filter: saturate(1.08) contrast(1.03);
         }
 
         .about-image-wrapper:hover img {
-            transform: scale(1.04);
-            filter: saturate(1.12) contrast(1.08);
+            transform: scale(1.02);
+            filter: saturate(1.12) contrast(1.06);
         }
 
-        .about-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
+        .about-content {
+            max-width: 620px;
         }
 
         .about-content .subtitle {
             color: var(--gold);
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 3px;
-            margin-bottom: 30px;
-            font-weight: 400;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
-        .about p {
-            color: var(--secondary-text);
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 4vw, 54px);
+            margin-bottom: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .about-content h2 .lens {
+            color: #b81d1d;
+        }
+
+        .about-divider {
+            width: 88px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), rgba(214, 168, 79, 0.24));
+            position: relative;
+            margin: 0 0 26px;
+        }
+
+        .about-divider::before,
+        .about-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        .about-divider::before {
+            left: 0;
+        }
+
+        .about-divider::after {
+            right: 0;
+        }
+
+        .about-content p {
+            color: rgba(245, 245, 245, 0.82);
             line-height: 1.9;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             font-size: 15px;
+            text-align: left;
+        }
+
+        .about-signature {
+            margin-top: 26px;
+        }
+
+        .about-signature .name {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: clamp(32px, 3vw, 42px);
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .about-signature .role {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
         }
 
         /* SKILL CARDS */
@@ -936,6 +997,14 @@
                 padding: 12px;
             }
 
+            .about-content {
+                max-width: 100%;
+            }
+
+            .about-content p {
+                font-size: 14px;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1260,9 +1329,11 @@
 
             <div class="about-content">
 
-                <p class="subtitle">ABOUT LUCIFFER</p>
+                <p class="subtitle">About Me</p>
 
-                <h2>Behind The Lens</h2>
+                <h2>Behind The <span class="lens">Lens</span></h2>
+
+                <div class="about-divider" aria-hidden="true"></div>
 
                 <p>
                     I don't simply capture photographs — I preserve the atmosphere, emotion and stories hidden inside a moment. Photography is my way of transforming fleeting moments into visual experiences that can be revisited for years.
@@ -1276,15 +1347,10 @@
                     For me, photography is not just about what the camera sees. It is about how a moment feels.
                 </p>
 
-                <!-- SKILL CARDS -->
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                        <h3>Photography</h3>
-                        <p>Capturing moments with precision, technical expertise, and artistic vision across multiple genres.</p>
-                    </div>
+                <div class="about-signature">
+                    <span class="name">Luciffer</span>
+                    <span class="role">Photographer</span>
+                </div>
 
                     <div class="skill-card">
                         <div class="skill-icon">
