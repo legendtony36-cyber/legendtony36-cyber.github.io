@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Luciffer Photography</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d6a84f;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #d6a84f;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.8)),
+                url("https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=2000&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero small {
+            color: #d6a84f;
+            font-size: 18px;
+            letter-spacing: 4px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 100px);
+            margin: 15px 0;
+            letter-spacing: 4px;
+        }
+
+        .hero h2 {
+            font-size: 20px;
+            font-weight: normal;
+            color: #ddd;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 28px;
+            background: #d6a84f;
+            color: #111;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            letter-spacing: 3px;
+        }
+
+        .section-title p {
+            color: #d6a84f;
+            margin-top: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .photo {
+            height: 350px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .photo:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: #111;
+        }
+
+        .contact h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #bbb;
+            margin: 10px;
+        }
+
+        .social {
+            margin-top: 25px;
+        }
+
+        .social a {
+            color: #d6a84f;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #050505;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .photo {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            LUCiFFER<span>PHOTOGRAPHY</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small>WELCOME TO MY WORLD</small>
+
+            <h1>LUCiFFER</h1>
+
+            <h2>PHOTOGRAPHER • STORYTELLER</h2>
+
+            <p>
+                Capturing emotions, moments and stories
+                through the lens.
+            </p>
+
+            <a href="#portfolio" class="btn">
+                VIEW MY WORK
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+
+        <div class="section-title">
+            <p>MY WORK</p>
+            <h2>PORTFOLIO</h2>
+        </div>
+
+        <div class="gallery">
+
+            <div class="photo">
+                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="photo">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="photo">
+                <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="photo">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="photo">
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="photo">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="about">
+
+            <img src="https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?auto=format&fit=crop&w=1000&q=85">
+
+            <div>
+
+                <p style="color:#d6a84f; letter-spacing:3px;">
+                    ABOUT ME
+                </p>
+
+                <h2>Behind The Lens</h2>
+
+                <p>
+                    Hi, I'm Luciffer — a passionate photographer
+                    who loves capturing beautiful moments and
+                    turning them into memories.
+                </p>
+
+                <p>
+                    Photography for me isn't just about taking
+                    pictures. It's about emotions, creativity,
+                    perspective and storytelling.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2>LET'S CONNECT</h2>
+
+        <p>Have a project or collaboration in mind?</p>
+
+        <p>Let's create something amazing together.</p>
+
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Email</a>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Luciffer Photography. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
