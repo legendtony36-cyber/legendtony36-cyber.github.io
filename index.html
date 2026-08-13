@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Luciffer Photography</title>
+    <title>Luciffer Photography - Professional Photography Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         * {
@@ -17,10 +23,20 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --gold: #d6a84f;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --light-text: #f5f5f5;
+            --secondary-text: #bbb;
+            --accent: #f4f4f4;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
-            color: white;
+            font-family: 'Lato', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
         }
 
         /* NAVBAR */
@@ -32,35 +48,76 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(15px);
             z-index: 1000;
+            border-bottom: 1px solid rgba(214, 168, 79, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 7%;
+            background: rgba(10, 10, 10, 0.95);
         }
 
         .logo {
+            font-family: 'Playfair Display', serif;
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 700;
             letter-spacing: 2px;
         }
 
         .logo span {
-            color: #d6a84f;
+            color: var(--gold);
         }
 
         nav ul {
             display: flex;
-            gap: 30px;
+            gap: 35px;
             list-style: none;
         }
 
         nav a {
-            color: white;
+            color: var(--light-text);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
-            color: #d6a84f;
+            color: var(--gold);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
         }
 
         /* HERO */
@@ -70,179 +127,630 @@
             align-items: center;
             padding: 0 8%;
             background:
-                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.8)),
+                linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%),
                 url("https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=2000&q=85");
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 700px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero small {
-            color: #d6a84f;
-            font-size: 18px;
+            color: var(--gold);
+            font-size: 16px;
             letter-spacing: 4px;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 300;
+            animation: fadeInUp 1.2s ease-out 0.1s both;
         }
 
         .hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: clamp(50px, 8vw, 100px);
             margin: 15px 0;
             letter-spacing: 4px;
+            font-weight: 700;
+            animation: fadeInUp 1.2s ease-out 0.2s both;
         }
 
         .hero h2 {
             font-size: 20px;
-            font-weight: normal;
-            color: #ddd;
+            font-weight: 300;
+            color: var(--accent);
             letter-spacing: 3px;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
         }
 
         .hero p {
             margin-top: 20px;
-            color: #ccc;
-            line-height: 1.7;
+            color: var(--secondary-text);
+            line-height: 1.8;
+            font-size: 16px;
+            animation: fadeInUp 1.2s ease-out 0.4s both;
         }
 
         .btn {
             display: inline-block;
             margin-top: 30px;
-            padding: 14px 28px;
-            background: #d6a84f;
-            color: #111;
+            padding: 16px 40px;
+            background: var(--gold);
+            color: var(--dark-bg);
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
+            font-weight: 600;
+            border-radius: 2px;
+            letter-spacing: 1px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(214, 168, 79, 0.3);
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         /* SECTIONS */
         section {
-            padding: 90px 7%;
+            padding: 100px 7%;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .section-title h2 {
-            font-size: 42px;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
             letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .section-title p {
-            color: #d6a84f;
-            margin-top: 10px;
-            letter-spacing: 3px;
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 400;
+        }
+
+        /* PORTFOLIO FILTERS */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--dark-bg);
         }
 
         /* GALLERY */
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
+            gap: 20px;
         }
 
         .photo {
-            height: 350px;
+            height: 360px;
             overflow: hidden;
-            border-radius: 5px;
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+            group: "gallery";
         }
 
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.5s;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(214, 168, 79, 0.1);
+            opacity: 0;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-overlay i {
+            font-size: 24px;
+            color: var(--gold);
+            transform: scale(0.8);
+            transition: transform 0.4s ease;
         }
 
         .photo:hover img {
-            transform: scale(1.08);
+            transform: scale(1.1) rotate(0.5deg);
+        }
+
+        .photo:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo:hover .photo-overlay i {
+            transform: scale(1);
+        }
+
+        .photo[data-category] {
+            transition: all 0.4s ease;
+        }
+
+        .photo.hidden {
+            display: none;
         }
 
         /* ABOUT */
         .about {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 70px;
             align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(214, 168, 79, 0.1) 0%, transparent 100%);
+            z-index: 2;
         }
 
         .about img {
             width: 100%;
             max-height: 550px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 2px;
+            transition: transform 0.6s ease;
         }
 
-        .about h2 {
+        .about-image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 42px;
             margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .about-content .subtitle {
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 400;
         }
 
         .about p {
-            color: #bbb;
-            line-height: 1.8;
-            margin-bottom: 15px;
+            color: var(--secondary-text);
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
         /* CONTACT */
         .contact {
             text-align: center;
-            background: #111;
+            background: linear-gradient(135deg, rgba(214, 168, 79, 0.05) 0%, transparent 100%);
         }
 
         .contact h2 {
-            font-size: 45px;
-            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
 
         .contact p {
-            color: #bbb;
-            margin: 10px;
+            color: var(--secondary-text);
+            margin: 15px 0;
+            font-size: 16px;
         }
 
         .social {
-            margin-top: 25px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
         }
 
         .social a {
-            color: #d6a84f;
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
             text-decoration: none;
-            margin: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social a:hover {
+            background: var(--gold);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(214, 168, 79, 0.3);
+        }
+
+        /* FULLSCREEN VIEWER */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: var(--gold);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(214, 168, 79, 0.2);
+            color: var(--gold);
+            border: none;
+            font-size: 30px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(214, 168, 79, 0.4);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 2px;
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 25px;
-            background: #050505;
-            color: #777;
+            padding: 40px 7%;
+            background: var(--darker-bg);
+            color: #666;
             font-size: 13px;
+            border-top: 1px solid rgba(214, 168, 79, 0.1);
+            letter-spacing: 1px;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(214, 168, 79, 0.7);
         }
 
         /* MOBILE */
-        @media (max-width: 800px) {
+        @media (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
+            .photo {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
             nav ul {
                 display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 0 5%;
             }
 
             .hero h1 {
                 font-size: 55px;
             }
 
+            .hero h2 {
+                font-size: 16px;
+            }
+
             .gallery {
                 grid-template-columns: 1fr;
             }
 
+            .photo {
+                height: 280px;
+            }
+
             .about {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 36px;
+            }
+
+            .contact h2 {
+                font-size: 36px;
+            }
+
+            .portfolio-filters {
+                gap: 12px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
+
+            .social {
+                gap: 20px;
+            }
+
+            .social a {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .lightbox-nav {
+                padding: 10px 15px;
+                font-size: 24px;
+            }
+
+            .lightbox-close {
+                font-size: 30px;
+                top: 15px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero {
+                padding: 0 5%;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 14px;
+            }
+
+            .hero small {
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 14px 28px;
+                font-size: 12px;
+            }
+
+            .gallery {
+                gap: 15px;
             }
 
             .photo {
-                height: 300px;
+                height: 250px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .contact h2 {
+                font-size: 28px;
+            }
+
+            .portfolio-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+
+            .about-content .subtitle {
+                font-size: 12px;
+            }
+
+            .about p {
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 12px;
             }
         }
     </style>
@@ -251,7 +759,7 @@
 <body>
 
     <!-- NAVIGATION -->
-    <nav>
+    <nav id="navbar">
         <div class="logo">
             LUCiFFER<span>PHOTOGRAPHY</span>
         </div>
@@ -262,27 +770,32 @@
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
 
-    <!-- HOME -->
+    <!-- HOME / HERO -->
     <section class="hero" id="home">
 
         <div class="hero-content">
 
             <small>WELCOME TO MY WORLD</small>
 
-            <h1>LUCiFFER</h1>
+            <h1>LUCIFFER</h1>
 
             <h2>PHOTOGRAPHER • STORYTELLER</h2>
 
             <p>
-                Capturing emotions, moments and stories
-                through the lens.
+                Capturing emotions, moments and stories through the lens. Every image tells a unique tale.
             </p>
 
             <a href="#portfolio" class="btn">
-                VIEW MY WORK
+                EXPLORE PORTFOLIO
             </a>
 
         </div>
@@ -298,30 +811,56 @@
             <h2>PORTFOLIO</h2>
         </div>
 
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">ALL WORKS</button>
+            <button class="filter-btn" data-filter="portrait">PORTRAIT</button>
+            <button class="filter-btn" data-filter="landscape">LANDSCAPE</button>
+            <button class="filter-btn" data-filter="fashion">FASHION</button>
+            <button class="filter-btn" data-filter="event">EVENT</button>
+        </div>
+
         <div class="gallery">
 
-            <div class="photo">
-                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85">
+            <div class="photo" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85" alt="Portrait Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
             </div>
 
-            <div class="photo">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85">
+            <div class="photo" data-category="fashion">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" alt="Fashion Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
             </div>
 
-            <div class="photo">
-                <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85">
+            <div class="photo" data-category="landscape">
+                <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85" alt="Landscape Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
             </div>
 
-            <div class="photo">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85">
+            <div class="photo" data-category="event">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Event Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
             </div>
 
-            <div class="photo">
-                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85">
+            <div class="photo" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85" alt="Portrait Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
             </div>
 
-            <div class="photo">
-                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=85">
+            <div class="photo" data-category="landscape">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=85" alt="Landscape Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
             </div>
 
         </div>
@@ -334,26 +873,26 @@
 
         <div class="about">
 
-            <img src="https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?auto=format&fit=crop&w=1000&q=85">
+            <div class="about-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?auto=format&fit=crop&w=1000&q=85" alt="Luciffer Photographer">
+            </div>
 
-            <div>
+            <div class="about-content">
 
-                <p style="color:#d6a84f; letter-spacing:3px;">
-                    ABOUT ME
-                </p>
+                <p class="subtitle">ABOUT ME</p>
 
                 <h2>Behind The Lens</h2>
 
                 <p>
-                    Hi, I'm Luciffer — a passionate photographer
-                    who loves capturing beautiful moments and
-                    turning them into memories.
+                    Hi, I'm Luciffer — a passionate photographer who loves capturing beautiful moments and turning them into timeless memories. With years of experience in visual storytelling, I bring creativity and technical excellence to every project.
                 </p>
 
                 <p>
-                    Photography for me isn't just about taking
-                    pictures. It's about emotions, creativity,
-                    perspective and storytelling.
+                    Photography for me isn't just about taking pictures. It's about emotions, creativity, perspective and storytelling. Every frame is a conversation between light and shadow, a moment frozen in time that speaks volumes about the subject and the moment.
+                </p>
+
+                <p>
+                    Whether it's intimate portraits, sweeping landscapes, fashion editorials, or dynamic events, I approach every session with the same dedication: to create images that move, inspire, and endure.
                 </p>
 
             </div>
@@ -370,12 +909,13 @@
 
         <p>Have a project or collaboration in mind?</p>
 
-        <p>Let's create something amazing together.</p>
+        <p>Get in touch and let's create something extraordinary together.</p>
 
         <div class="social">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">Email</a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
 
     </section>
@@ -383,8 +923,147 @@
 
     <!-- FOOTER -->
     <footer>
-        © 2026 Luciffer Photography. All Rights Reserved.
+        © 2026 Luciffer Photography. All Rights Reserved. | <span id="current-year"></span>
     </footer>
+
+    <!-- FULLSCREEN IMAGE VIEWER -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="Full size image">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</button>
+            <div class="lightbox-counter">
+                <span id="current-image">1</span> / <span id="total-images">6</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // PORTFOLIO FILTER
+        // ============================================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const photos = document.querySelectorAll('.photo');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                photos.forEach(photo => {
+                    if (filter === 'all') {
+                        photo.classList.remove('hidden');
+                    } else {
+                        const category = photo.getAttribute('data-category');
+                        if (category === filter) {
+                            photo.classList.remove('hidden');
+                        } else {
+                            photo.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // ============================================
+        // LIGHTBOX FUNCTIONALITY
+        // ============================================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.querySelector('.lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        let currentImageIndex = 0;
+        let allPhotos = [];
+
+        // Get all visible photos
+        function getVisiblePhotos() {
+            return Array.from(photos).filter(photo => !photo.classList.contains('hidden'));
+        }
+
+        // Open lightbox
+        photos.forEach((photo, index) => {
+            photo.addEventListener('click', () => {
+                allPhotos = getVisiblePhotos();
+                currentImageIndex = allPhotos.indexOf(photo);
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            const currentPhoto = allPhotos[currentImageIndex];
+            const img = currentPhoto.querySelector('img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateLightboxCounter();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % allPhotos.length;
+            openLightbox();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + allPhotos.length) % allPhotos.length;
+            openLightbox();
+        }
+
+        function updateLightboxCounter() {
+            document.getElementById('current-image').textContent = currentImageIndex + 1;
+            document.getElementById('total-images').textContent = allPhotos.length;
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevImage);
+        lightboxNext.addEventListener('click', nextImage);
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ============================================
+        // YEAR AUTO-UPDATE
+        // ============================================
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    </script>
 
 </body>
 </html>
