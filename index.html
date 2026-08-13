@@ -562,6 +562,160 @@
         }
 
         /* FOOTER */
+        /* CONTACT FORM */
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 50px auto 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 50px;
+            border: 1px solid rgba(214, 168, 79, 0.2);
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            animation: slideInUp 0.6s ease-out backwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            color: var(--light-text);
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(214, 168, 79, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            border: none;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(214, 168, 79, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 2px;
+            text-align: center;
+            font-size: 13px;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .form-message.success {
+            background: rgba(52, 168, 83, 0.2);
+            color: #34a853;
+            border: 1px solid rgba(52, 168, 83, 0.4);
+        }
+
+        .form-message.error {
+            background: rgba(217, 48, 37, 0.2);
+            color: #d93025;
+            border: 1px solid rgba(217, 48, 37, 0.4);
+        }
+
+        .form-message.active {
+            display: block;
+        }
+
+        .form-error {
+            color: #d93025;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
         footer {
             text-align: center;
             padding: 40px 7%;
@@ -570,6 +724,45 @@
             font-size: 13px;
             border-top: 1px solid rgba(214, 168, 79, 0.1);
             letter-spacing: 1px;
+        }
+
+        /* MOBILE MENU */
+        nav ul.mobile-active {
+            display: flex !important;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 30px 7%;
+            gap: 20px;
+            border-top: 1px solid rgba(214, 168, 79, 0.15);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* SCROLLBAR */
@@ -911,11 +1104,75 @@
 
         <p>Get in touch and let's create something extraordinary together.</p>
 
+        <div class="contact-wrapper">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Enter your full name"
+                        required
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your.email@example.com"
+                        required
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="+1 (555) 000-0000"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        name="subject" 
+                        placeholder="What is this about?"
+                        required
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Tell me about your project, ideas, or anything else you'd like to discuss..."
+                        required
+                    ></textarea>
+                    <span class="form-error"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+
         <div class="social">
-            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" title="Instagram" onclick="return false;"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Email" onclick="return false;"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="LinkedIn" onclick="return false;"><i class="fab fa-linkedin-in"></i></a>
         </div>
 
     </section>
@@ -941,6 +1198,32 @@
 
 
     <script>
+        // ============================================
+        // MOBILE NAVIGATION
+        // ============================================
+        const hamburger = document.getElementById('hamburger');
+        const navList = document.querySelector('nav ul');
+        const navLinks = document.querySelectorAll('nav a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navList.classList.toggle('mobile-active');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navList.classList.remove('mobile-active');
+            });
+        });
+
+        // Close menu when scrolling
+        window.addEventListener('scroll', () => {
+            hamburger.classList.remove('active');
+            navList.classList.remove('mobile-active');
+        });
+
         // ============================================
         // NAVBAR SCROLL EFFECT
         // ============================================
@@ -1056,6 +1339,182 @@
             if (e.key === 'ArrowRight') nextImage();
             if (e.key === 'ArrowLeft') prevImage();
             if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ============================================
+        // CONTACT FORM VALIDATION & SUBMISSION
+        // ============================================
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Get all form inputs
+        const formInputs = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            phone: document.getElementById('phone'),
+            subject: document.getElementById('subject'),
+            message: document.getElementById('message')
+        };
+
+        // Validate individual field
+        function validateField(fieldName, value) {
+            const errorElement = formInputs[fieldName].parentElement.querySelector('.form-error');
+            let isValid = true;
+            let errorMessage = '';
+
+            switch(fieldName) {
+                case 'name':
+                    if (!value.trim()) {
+                        isValid = false;
+                        errorMessage = 'Name is required';
+                    } else if (value.trim().length < 2) {
+                        isValid = false;
+                        errorMessage = 'Name must be at least 2 characters';
+                    }
+                    break;
+                case 'email':
+                    if (!value.trim()) {
+                        isValid = false;
+                        errorMessage = 'Email is required';
+                    } else if (!emailRegex.test(value)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email';
+                    }
+                    break;
+                case 'subject':
+                    if (!value.trim()) {
+                        isValid = false;
+                        errorMessage = 'Subject is required';
+                    } else if (value.trim().length < 3) {
+                        isValid = false;
+                        errorMessage = 'Subject must be at least 3 characters';
+                    }
+                    break;
+                case 'message':
+                    if (!value.trim()) {
+                        isValid = false;
+                        errorMessage = 'Message is required';
+                    } else if (value.trim().length < 10) {
+                        isValid = false;
+                        errorMessage = 'Message must be at least 10 characters';
+                    }
+                    break;
+            }
+
+            if (isValid) {
+                errorElement.textContent = '';
+                errorElement.classList.remove('show');
+                formInputs[fieldName].style.borderColor = 'rgba(214, 168, 79, 0.3)';
+            } else {
+                errorElement.textContent = errorMessage;
+                errorElement.classList.add('show');
+                formInputs[fieldName].style.borderColor = '#d93025';
+            }
+
+            return isValid;
+        }
+
+        // Add real-time validation
+        Object.keys(formInputs).forEach(fieldName => {
+            formInputs[fieldName].addEventListener('blur', () => {
+                validateField(fieldName, formInputs[fieldName].value);
+            });
+
+            formInputs[fieldName].addEventListener('focus', () => {
+                const errorElement = formInputs[fieldName].parentElement.querySelector('.form-error');
+                errorElement.classList.remove('show');
+                formInputs[fieldName].style.borderColor = 'rgba(214, 168, 79, 0.3)';
+            });
+        });
+
+        // Validate entire form
+        function validateForm() {
+            let isFormValid = true;
+
+            const fieldsToValidate = ['name', 'email', 'subject', 'message'];
+            fieldsToValidate.forEach(fieldName => {
+                if (!validateField(fieldName, formInputs[fieldName].value)) {
+                    isFormValid = false;
+                }
+            });
+
+            return isFormValid;
+        }
+
+        // Show form message
+        function showFormMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type} active`;
+            
+            setTimeout(() => {
+                formMessage.classList.remove('active');
+            }, 5000);
+        }
+
+        // Handle form submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validate form
+            if (!validateForm()) {
+                showFormMessage('Please fix the errors in the form', 'error');
+                return;
+            }
+
+            // Disable submit button
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Prepare form data
+            const formData = {
+                name: formInputs.name.value,
+                email: formInputs.email.value,
+                phone: formInputs.phone.value,
+                subject: formInputs.subject.value,
+                message: formInputs.message.value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            try {
+                // Send to Formspree (https://formspree.io/)
+                // You need to set up a Formspree endpoint and replace the URL
+                const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    showFormMessage('✓ Message sent successfully! I\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                    
+                    // Reset error states
+                    Object.keys(formInputs).forEach(fieldName => {
+                        formInputs[fieldName].style.borderColor = 'rgba(214, 168, 79, 0.3)';
+                        const errorElement = formInputs[fieldName].parentElement.querySelector('.form-error');
+                        errorElement.classList.remove('show');
+                    });
+                } else {
+                    showFormMessage('Error sending message. Please try again or contact directly.', 'error');
+                }
+            } catch (error) {
+                // If Formspree is not configured, show fallback message
+                showFormMessage('Message ready to send. Please configure email service in code.', 'success');
+                contactForm.reset();
+                
+                // Log form data to console for testing
+                console.log('Form Data (configure email service):', formData);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
         });
 
         // ============================================
