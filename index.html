@@ -567,6 +567,115 @@
             color: var(--gold);
         }
 
+        /* CONTACT FORM */
+        .contact-form-wrapper {
+            max-width: 600px;
+            margin: 60px auto 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border: 1px solid rgba(214, 168, 79, 0.2);
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            animation: slideInUp 0.6s ease-out backwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            color: var(--light-text);
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(214, 168, 79, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            border: none;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(214, 168, 79, 0.4);
+        }
+
+        .send-btn:hover::before {
+            left: 100%;
+        }
+
         .social {
             margin-top: 50px;
             display: flex;
@@ -827,6 +936,15 @@
                 min-width: 100%;
             }
 
+            .contact-form-wrapper {
+                padding: 30px;
+                margin: 50px auto 0;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
             section {
                 padding: 80px 5%;
             }
@@ -972,6 +1090,30 @@
 
             .contact-value {
                 font-size: 14px;
+            }
+
+            .contact-form-wrapper {
+                padding: 25px;
+                margin: 40px auto 0;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            .form-group textarea {
+                min-height: 100px;
+            }
+
+            .send-btn {
+                padding: 14px;
+                font-size: 12px;
             }
 
             footer {
@@ -1174,7 +1316,7 @@
         </div>
 
         <div class="contact-links">
-            <a href="https://instagram.com/Luciffer_369K" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/Luciffer_369K/" class="contact-link" target="_blank" rel="noopener noreferrer">
                 <div class="contact-icon">
                     <i class="fab fa-instagram"></i>
                 </div>
@@ -1197,6 +1339,34 @@
                 <div class="contact-label">EMAIL</div>
                 <div class="contact-value">vivekumthe@gmail.com</div>
             </a>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-wrapper">
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        name="subject" 
+                        placeholder="What would you like to discuss?"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Tell me about your project or inquiry..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="send-btn">SEND MESSAGE</button>
+            </form>
         </div>
 
     </section>
@@ -1369,6 +1539,35 @@
         // YEAR AUTO-UPDATE
         // ============================================
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // ============================================
+        // EMAIL FORM HANDLER
+        // ============================================
+        const emailForm = document.getElementById('emailForm');
+        
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validate fields
+            if (!subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Create mailto link with subject and body
+            const mailtoLink = `mailto:vivekumthe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Clear form after a brief delay
+            setTimeout(() => {
+                emailForm.reset();
+            }, 500);
+        });
 
     </script>
 
