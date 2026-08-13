@@ -363,31 +363,40 @@
 
         .about-image-wrapper {
             position: relative;
+            width: min(420px, 100%);
+            margin: 0 auto;
+            padding: 14px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(214, 168, 79, 0.8), rgba(214, 168, 79, 0.2) 35%, rgba(10, 10, 10, 0.9) 70%);
+            border: 1px solid rgba(214, 168, 79, 0.8);
+            box-shadow: 0 0 0 1px rgba(214, 168, 79, 0.5), 0 0 30px rgba(214, 168, 79, 0.18), 0 20px 45px rgba(0, 0, 0, 0.35);
+            aspect-ratio: 1;
             overflow: hidden;
-            border-radius: 2px;
         }
 
         .about-image-wrapper::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(214, 168, 79, 0.1) 0%, transparent 100%);
+            inset: 8px;
+            border-radius: 50%;
+            border: 1px solid rgba(214, 168, 79, 0.6);
+            pointer-events: none;
             z-index: 2;
         }
 
         .about img {
             width: 100%;
-            max-height: 550px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 2px;
-            transition: transform 0.6s ease;
+            border-radius: 50%;
+            display: block;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: saturate(1.06) contrast(1.04);
         }
 
         .about-image-wrapper:hover img {
-            transform: scale(1.05);
+            transform: scale(1.04);
+            filter: saturate(1.12) contrast(1.08);
         }
 
         .about-content h2 {
@@ -922,6 +931,11 @@
                 gap: 40px;
             }
 
+            .about-image-wrapper {
+                max-width: 340px;
+                padding: 12px;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1241,7 +1255,7 @@
         <div class="about">
 
             <div class="about-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?auto=format&fit=crop&w=1000&q=85" alt="Luciffer Photographer">
+                <img src="images/profile.jpg" alt="Luciffer photographer portrait">
             </div>
 
             <div class="about-content">
