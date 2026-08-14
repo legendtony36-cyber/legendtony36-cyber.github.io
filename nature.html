@@ -431,8 +431,8 @@
 
         .download-link {
             position: absolute;
-            left: 20px;
-            bottom: 18px;
+            top: 16px;
+            left: 16px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -446,6 +446,7 @@
             text-transform: uppercase;
             z-index: 2;
             backdrop-filter: blur(10px);
+            box-shadow: 0 8px 18px rgba(2, 12, 14, 0.18);
         }
 
         .nature-footer {
@@ -620,8 +621,8 @@
             }
 
             .download-link {
-                left: 14px;
-                bottom: 14px;
+                top: 12px;
+                left: 12px;
             }
 
             .lightbox-prev,
@@ -764,6 +765,7 @@
 
                     const imageUrl = encodeURI(item.file);
                     card.innerHTML = `
+                        <a class="download-link" href="${imageUrl}" download aria-label="Download ${item.title}">⬇ Download</a>
                         <img src="${imageUrl}" alt="${item.title}" loading="lazy">
                         <div class="card-overlay">
                             <div class="card-meta">
@@ -771,7 +773,6 @@
                                 <span class="card-title">${item.title}</span>
                             </div>
                         </div>
-                        <a class="download-link" href="${imageUrl}" download aria-label="Download ${item.title}">⬇ Download</a>
                     `;
 
                     gallery.appendChild(card);

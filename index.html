@@ -80,12 +80,15 @@
 
         .nav-item {
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
         .dropdown-menu {
             position: absolute;
-            top: calc(100% + 18px);
+            top: 100%;
             left: 0;
+            margin-top: 0;
             display: none;
             min-width: 180px;
             padding: 14px 0;
@@ -95,10 +98,12 @@
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
             list-style: none;
             z-index: 1100;
+            pointer-events: auto;
         }
 
         .nav-item:hover .dropdown-menu,
-        .nav-item:focus-within .dropdown-menu {
+        .nav-item:focus-within .dropdown-menu,
+        .dropdown-menu:hover {
             display: block;
         }
 
