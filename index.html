@@ -75,6 +75,46 @@
             display: flex;
             gap: 35px;
             list-style: none;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 18px);
+            left: 0;
+            display: none;
+            min-width: 180px;
+            padding: 14px 0;
+            background: rgba(15, 15, 15, 0.96);
+            border: 1px solid rgba(214, 168, 79, 0.22);
+            border-radius: 12px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+            list-style: none;
+            z-index: 1100;
+        }
+
+        .nav-item:hover .dropdown-menu,
+        .nav-item:focus-within .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 18px;
+            color: var(--light-text);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(214, 168, 79, 0.08);
+            color: var(--gold);
         }
 
         nav a {
@@ -1405,8 +1445,14 @@
 
         <ul>
             <li><a href="#home">HOME</a></li>
-            <li><a href="#portfolio">PORTFOLIO</a></li>
-            <li><a href="nature.html">NATURE</a></li>
+            <li class="nav-item">
+                <a href="#portfolio">PORTFOLIO</a>
+                <ul class="dropdown-menu" aria-label="Portfolio menu">
+                    <li><a href="#portfolio">Portraits</a></li>
+                    <li><a href="#portfolio">Events</a></li>
+                    <li><a href="nature.html">Nature 🌿</a></li>
+                </ul>
+            </li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
