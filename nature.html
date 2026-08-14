@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Photography | VIVEK KUMTHE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-900: #061b17;
+            --forest-800: #0d2a24;
+            --forest-700: #153f39;
+            --forest-600: #1d5c4f;
+            --green-500: #3f8f78;
+            --green-400: #67b29a;
+            --blue-700: #103b56;
+            --blue-500: #2b6d8d;
+            --sky-300: #bfe5f3;
+            --seafoam: #d8f6f0;
+            --ivory: #edf7f4;
+            --text: #ecf6f3;
+            --muted: rgba(236, 246, 243, 0.75);
+            --glow: rgba(123, 201, 177, 0.35);
+            --shadow: rgba(3, 15, 18, 0.52);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, #071b18 0%, #0d2a24 16%, #0d2733 52%, #071a1f 100%);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .nature-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 27, 24, 0.72);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(143, 219, 197, 0.18);
+        }
+
+        .nature-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.15rem, 1.6vw, 1.7rem);
+            letter-spacing: 0.18rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--ivory);
+        }
+
+        .brand span {
+            color: #9ed3c1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 2vw, 28px);
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            position: relative;
+            font-size: 0.75rem;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            color: rgba(236, 246, 243, 0.84);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--green-400), var(--sky-300));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d9f7f1;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nature-hero {
+            position: relative;
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(120deg, rgba(5, 23, 18, 0.82) 0%, rgba(11, 44, 43, 0.7) 30%, rgba(10, 29, 48, 0.82) 100%),
+                url('public/images/nature/mountain-sunset.svg') center/cover no-repeat;
+            box-shadow: inset 0 0 80px rgba(0,0,0,0.2);
+        }
+
+        .nature-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 15% 25%, rgba(133, 209, 182, 0.22), transparent 18%),
+                        radial-gradient(circle at 80% 18%, rgba(148, 201, 232, 0.2), transparent 16%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 72px 5% 60px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.75rem;
+            letter-spacing: 0.28rem;
+            text-transform: uppercase;
+            color: #b7efe3;
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(189, 239, 226, 0.8), transparent);
+        }
+
+        .nature-hero h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 7rem);
+            line-height: 0.92;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            max-width: 760px;
+        }
+
+        .nature-hero h1 .accent {
+            color: #a9d7c7;
+        }
+
+        .nature-subtitle {
+            margin-top: 18px;
+            max-width: 620px;
+            font-size: clamp(1rem, 1.7vw, 1.4rem);
+            color: rgba(236, 246, 243, 0.9);
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+        }
+
+        .nature-hero p {
+            margin: 26px 0 0;
+            max-width: 620px;
+            font-size: 1.04rem;
+            color: var(--muted);
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .nature-btn,
+        .ghost-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 28px;
+            font-size: 0.76rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            border: 1px solid rgba(166, 222, 201, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nature-btn {
+            background: linear-gradient(135deg, #7ab39a 0%, #3d7e8d 100%);
+            color: #061b17;
+            font-weight: 700;
+            box-shadow: 0 18px 35px rgba(84, 154, 143, 0.2);
+        }
+
+        .ghost-btn {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+            backdrop-filter: blur(8px);
+        }
+
+        .nature-btn:hover,
+        .ghost-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 30px rgba(79, 170, 158, 0.2);
+            border-color: rgba(174, 224, 215, 0.9);
+        }
+
+        .nature-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 62px 5% 80px;
+        }
+
+        .gallery-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-header h2 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.1rem, 3vw, 3.3rem);
+            letter-spacing: 0.08rem;
+        }
+
+        .gallery-header p {
+            margin: 0;
+            color: rgba(236, 246, 243, 0.7);
+            letter-spacing: 0.14rem;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+        }
+
+        .nature-gallery {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .nature-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(141, 221, 196, 0.18);
+            box-shadow: 0 18px 40px rgba(2, 18, 16, 0.18);
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .nature-card:nth-child(1) { grid-column: span 5; }
+        .nature-card:nth-child(2) { grid-column: span 4; }
+        .nature-card:nth-child(3) { grid-column: span 3; }
+        .nature-card:nth-child(4) { grid-column: span 4; }
+        .nature-card:nth-child(5) { grid-column: span 5; }
+        .nature-card:nth-child(6) { grid-column: span 3; }
+
+        .nature-card img {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, filter 0.4s ease;
+        }
+
+        .nature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 45px rgba(24, 57, 54, 0.28);
+            border-color: rgba(158, 230, 213, 0.7);
+        }
+
+        .nature-card:hover img {
+            transform: scale(1.06);
+            filter: saturate(1.15) contrast(1.06);
+        }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: end;
+            padding: 22px 18px 18px;
+            background: linear-gradient(180deg, rgba(3, 17, 20, 0.06) 0%, rgba(4, 18, 18, 0.78) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nature-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .card-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            color: #bfe9dc;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 2vw, 2.2rem);
+            line-height: 1.1;
+            color: #f4faf8;
+        }
+
+        .nature-footer {
+            padding: 30px 5% 60px;
+            text-align: center;
+            color: rgba(236, 246, 243, 0.62);
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            border-top: 1px solid rgba(180, 228, 212, 0.12);
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(2, 12, 14, 0.9);
+            z-index: 2000;
+            padding: 24px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: min(92vw, 1200px);
+            max-height: 90vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 0.28s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .lightbox-image {
+            width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 18px;
+            border: 1px solid rgba(171, 223, 204, 0.32);
+            box-shadow: 0 26px 65px rgba(0, 0, 0, 0.35);
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            border: 1px solid rgba(174, 225, 215, 0.5);
+            background: rgba(9, 26, 24, 0.55);
+            color: #edf8f6;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .lightbox-close {
+            top: 16px;
+            right: 18px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .lightbox-prev { left: 18px; }
+        .lightbox-next { right: 18px; }
+
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(108, 191, 175, 0.14);
+            transform: translateY(-50%) scale(1.04);
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.04);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            padding: 8px 16px;
+            background: rgba(7, 23, 20, 0.7);
+            border: 1px solid rgba(171, 223, 204, 0.24);
+            border-radius: 999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        @media (max-width: 900px) {
+            .nature-card:nth-child(n) {
+                grid-column: span 6;
+            }
+
+            .nature-hero {
+                min-height: 62vh;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nature-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .nature-hero h1 {
+                letter-spacing: 0.06em;
+            }
+
+            .nature-subtitle {
+                letter-spacing: 0.05rem;
+            }
+
+            .nature-card:nth-child(n) {
+                grid-column: 1 / -1;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nature-btn,
+            .ghost-btn {
+                width: 100%;
+            }
+
+            .gallery-header {
+                align-items: flex-start;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                width: 42px;
+                height: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="nature-header">
+        <nav class="nature-nav" aria-label="Main navigation">
+            <a class="brand" href="index.html#home">VIVEK <span>KUMTHE</span></a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a class="active" href="nature.html">Nature</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="nature-hero" aria-label="Nature photography introduction">
+            <div class="hero-inner">
+                <div class="eyebrow">Nature Collection</div>
+                <h1>Vivek <span class="accent">Kumthe</span></h1>
+                <div class="nature-subtitle">Landscape • Wilderness • Light • Silence</div>
+                <p>
+                    A cinematic collection inspired by forests, mountains, rivers, open skies, and the quiet drama of the natural world.
+                </p>
+                <div class="hero-actions">
+                    <a class="nature-btn" href="index.html#portfolio">Back to Portfolio</a>
+                    <a class="ghost-btn" href="#gallery">View Gallery</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="nature-main" id="gallery">
+            <div class="gallery-header">
+                <h2>Nature &amp; Scenery</h2>
+                <p>Forest • Mountains • Skies • Rivers</p>
+            </div>
+
+            <div class="nature-gallery">
+                <article class="nature-card" data-title="Forest Drift" data-tag="Forest" aria-label="Forest Drift image">
+                    <img src="public/images/nature/forest-river.svg" alt="Forest river photography placeholder">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span class="card-tag">Forest</span>
+                            <span class="card-title">Forest Drift</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="nature-card" data-title="Golden Summit" data-tag="Mountain" aria-label="Golden Summit image">
+                    <img src="public/images/nature/mountain-sunset.svg" alt="Mountain sunset photography placeholder">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span class="card-tag">Mountain</span>
+                            <span class="card-title">Golden Summit</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="nature-card" data-title="Tidal Calm" data-tag="Ocean" aria-label="Tidal Calm image">
+                    <img src="public/images/nature/ocean-foam.svg" alt="Ocean foam photography placeholder">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span class="card-tag">Ocean</span>
+                            <span class="card-title">Tidal Calm</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="nature-card" data-title="Valley Light" data-tag="Valley" aria-label="Valley Light image">
+                    <img src="public/images/nature/valley-sky.svg" alt="Valley scenic photography placeholder">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span class="card-tag">Valley</span>
+                            <span class="card-title">Valley Light</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="nature-card" data-title="Pine Silence" data-tag="Forest" aria-label="Pine Silence image">
+                    <img src="public/images/nature/pine-forest.svg" alt="Pine forest photography placeholder">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span class="card-tag">Forest</span>
+                            <span class="card-title">Pine Silence</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="nature-card" data-title="Dawn Lake" data-tag="Water" aria-label="Dawn Lake image">
+                    <img src="public/images/nature/dawn-lake.svg" alt="Lake dawn photography placeholder">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span class="card-tag">Water</span>
+                            <span class="card-title">Dawn Lake</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="nature-footer">
+        © 2026 VIVEK KUMTHE • Nature Photography
+    </footer>
+
+    <div class="lightbox" id="lightbox" aria-label="Image viewer">
+        <div class="lightbox-content">
+            <button class="lightbox-close" type="button" aria-label="Close viewer">&times;</button>
+            <button class="lightbox-prev" type="button" aria-label="Previous image">&#10094;</button>
+            <img class="lightbox-image" src="" alt="Expanded nature photography">
+            <button class="lightbox-next" type="button" aria-label="Next image">&#10095;</button>
+            <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">1</span></div>
+        </div>
+    </div>
+
+    <script>
+        const cards = Array.from(document.querySelectorAll('.nature-card'));
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxCurrent = document.getElementById('lightbox-current');
+        const lightboxTotal = document.getElementById('lightbox-total');
+        const closeButton = document.querySelector('.lightbox-close');
+        const prevButton = document.querySelector('.lightbox-prev');
+        const nextButton = document.querySelector('.lightbox-next');
+        let currentIndex = 0;
+
+        function updateLightbox() {
+            const item = cards[currentIndex];
+            const img = item.querySelector('img');
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt;
+            lightboxCurrent.textContent = currentIndex + 1;
+            lightboxTotal.textContent = cards.length;
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        cards.forEach((card, index) => {
+            card.addEventListener('click', () => openLightbox(index));
+        });
+
+        closeButton.addEventListener('click', closeLightbox);
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            updateLightbox();
+        });
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateLightbox();
+        });
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateLightbox();
+            }
+            if (event.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
