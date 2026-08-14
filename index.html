@@ -122,12 +122,12 @@
 
         /* HERO */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 8%;
+            padding: 150px 8% 90px;
             background:
-                linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%),
+                linear-gradient(120deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.82) 100%),
                 url("https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=2000&q=85");
             background-size: cover;
             background-position: center;
@@ -139,18 +139,32 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(197, 30, 30, 0.26), transparent 22%),
+                radial-gradient(circle at 80% 25%, rgba(214, 168, 79, 0.2), transparent 18%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55));
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            bottom: 8%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(214, 168, 79, 0.8), transparent);
             z-index: 1;
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 780px;
             position: relative;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
             animation: fadeInUp 1.2s ease-out;
         }
 
@@ -165,56 +179,95 @@
             }
         }
 
-        .hero small {
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             color: var(--gold);
-            font-size: 16px;
-            letter-spacing: 4px;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 300;
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
             animation: fadeInUp 1.2s ease-out 0.1s both;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 46px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(50px, 8vw, 100px);
-            margin: 15px 0;
-            letter-spacing: 4px;
+            font-size: clamp(52px, 7vw, 110px);
+            line-height: 0.96;
+            letter-spacing: 5px;
             font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
             animation: fadeInUp 1.2s ease-out 0.2s both;
         }
 
+        .hero h1 .accent {
+            color: var(--gold);
+        }
+
+        .hero-brand {
+            font-size: clamp(12px, 1.8vw, 22px);
+            letter-spacing: 1.25rem;
+            color: rgba(255, 255, 255, 0.18);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: -8px;
+            animation: fadeInUp 1.2s ease-out 0.25s both;
+        }
+
         .hero h2 {
-            font-size: 20px;
-            font-weight: 300;
-            color: var(--accent);
-            letter-spacing: 3px;
+            max-width: 640px;
+            font-size: clamp(18px, 2.1vw, 30px);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1.5px;
+            line-height: 1.5;
             animation: fadeInUp 1.2s ease-out 0.3s both;
         }
 
         .hero p {
-            margin-top: 20px;
-            color: var(--secondary-text);
-            line-height: 1.8;
+            max-width: 620px;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.9;
             font-size: 16px;
             animation: fadeInUp 1.2s ease-out 0.4s both;
         }
 
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+        }
+
         .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 16px 40px;
-            background: var(--gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, var(--gold), #b77d1f);
             color: var(--dark-bg);
             text-decoration: none;
-            font-weight: 600;
-            border-radius: 2px;
-            letter-spacing: 1px;
-            font-size: 13px;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            border-radius: 0;
+            letter-spacing: 2px;
+            font-size: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(214, 168, 79, 0.75);
+            box-shadow: 0 18px 35px rgba(214, 168, 79, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1.2s ease-out 0.5s both;
         }
 
         .btn::before {
@@ -224,13 +277,14 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.3s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transition: left 0.5s ease;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(214, 168, 79, 0.3);
+            box-shadow: 0 22px 40px rgba(214, 168, 79, 0.36);
+            filter: brightness(1.04);
         }
 
         .btn:hover::before {
@@ -1062,15 +1116,39 @@
             }
 
             .hero {
-                padding: 0 5%;
+                padding: 130px 5% 70px;
+            }
+
+            .hero-content {
+                gap: 14px;
+            }
+
+            .hero-badge {
+                letter-spacing: 2px;
+                font-size: 10px;
             }
 
             .hero h1 {
-                font-size: 55px;
+                font-size: 52px;
+                letter-spacing: 3px;
+            }
+
+            .hero-brand {
+                letter-spacing: 0.8rem;
+                margin-top: -4px;
             }
 
             .hero h2 {
-                font-size: 16px;
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-actions {
+                margin-top: 6px;
             }
 
             .gallery {
@@ -1179,24 +1257,41 @@
             }
 
             .hero {
-                padding: 0 5%;
+                padding: 120px 5% 55px;
+            }
+
+            .hero-content {
+                gap: 12px;
+            }
+
+            .hero-badge {
+                letter-spacing: 1.5px;
+                font-size: 9px;
             }
 
             .hero h1 {
-                font-size: 40px;
+                font-size: 42px;
+                letter-spacing: 2px;
+            }
+
+            .hero-brand {
+                font-size: 12px;
+                letter-spacing: 0.5rem;
             }
 
             .hero h2 {
+                font-size: 15px;
+            }
+
+            .hero p {
                 font-size: 14px;
             }
 
-            .hero small {
-                font-size: 13px;
-            }
-
             .btn {
-                padding: 14px 28px;
-                font-size: 12px;
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 11px;
+                letter-spacing: 1.5px;
             }
 
             .gallery {
@@ -1328,19 +1423,23 @@
 
         <div class="hero-content">
 
-            <small>WELCOME TO MY WORLD</small>
+            <span class="hero-badge">Photographer • Visual Storyteller</span>
 
-            <h1>LUCIFFER</h1>
+            <h1>VIVEK <span class="accent">KUMTHE</span></h1>
 
-            <h2>PHOTOGRAPHER • STORYTELLER</h2>
+            <div class="hero-brand">LUCIFFER</div>
+
+            <h2>Framing emotion, light, and unforgettable moments.</h2>
 
             <p>
-                Capturing emotions, moments and stories through the lens. Every image tells a unique tale.
+                Capturing cinematic portraits, intimate stories, and the subtle details that make every frame feel lived in and alive.
             </p>
 
-            <a href="#portfolio" class="btn">
-                EXPLORE PORTFOLIO
-            </a>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn">
+                    EXPLORE PORTFOLIO
+                </a>
+            </div>
 
         </div>
 
