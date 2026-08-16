@@ -151,6 +151,39 @@
             width: 100%;
         }
 
+        .nav-admin-btn {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-admin-btn::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-admin-btn:hover {
+            color: var(--gold);
+        }
+
+        .nav-admin-btn:hover::before {
+            width: 100%;
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -1089,6 +1122,102 @@
             letter-spacing: 1px;
         }
 
+        /* ADMIN LOGIN MODAL */
+        .admin-login-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2500;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .admin-login-modal.active {
+            display: flex;
+        }
+
+        .admin-login-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(12px);
+        }
+
+        .admin-login-panel {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 440px;
+            background: rgba(15, 15, 15, 0.98);
+            border: 1px solid rgba(214, 168, 79, 0.25);
+            padding: 40px 32px 32px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            animation: fadeInUp 0.35s ease-out;
+        }
+
+        .admin-login-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            color: var(--gold);
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .admin-login-close:hover {
+            background: rgba(214, 168, 79, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .admin-login-panel h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .admin-login-panel h2 span {
+            color: var(--gold);
+        }
+
+        .admin-login-subtitle {
+            color: var(--secondary-text);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .admin-login-error {
+            display: none;
+            background: rgba(231, 76, 60, 0.12);
+            border: 1px solid rgba(231, 76, 60, 0.35);
+            color: #ff8a80;
+            padding: 12px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .admin-login-error.show {
+            display: block;
+        }
+
+        .admin-login-panel .form-group {
+            margin-bottom: 20px;
+        }
+
+        .admin-login-panel .send-btn {
+            width: 100%;
+            margin-top: 4px;
+        }
+
         /* MOBILE MENU */
         nav ul.mobile-active {
             display: flex !important;
@@ -1292,6 +1421,20 @@
                 top: 15px;
                 right: 20px;
             }
+
+            .admin-login-panel {
+                padding: 32px 24px 24px;
+            }
+
+            .admin-login-panel h2 {
+                font-size: 24px;
+            }
+
+            .nav-admin-btn {
+                width: 100%;
+                text-align: left;
+                padding: 4px 0;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1466,6 +1609,7 @@
             </li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#contact">CONTACT</a></li>
+            <li><button type="button" class="nav-admin-btn" id="admin-login-trigger">ADMIN LOGIN</button></li>
         </ul>
 
         <div class="hamburger" id="hamburger">
@@ -1746,6 +1890,28 @@
         </div>
     </div>
 
+    <!-- ADMIN LOGIN MODAL -->
+    <div class="admin-login-modal" id="admin-login-modal" aria-hidden="true">
+        <div class="admin-login-backdrop" id="admin-login-backdrop"></div>
+        <div class="admin-login-panel" role="dialog" aria-modal="true" aria-labelledby="admin-login-title">
+            <button type="button" class="admin-login-close" id="admin-login-close" aria-label="Close admin login">&times;</button>
+            <h2 id="admin-login-title">ADMIN <span>LOGIN</span></h2>
+            <p class="admin-login-subtitle">Vivek Kumthe Photography</p>
+            <div class="admin-login-error" id="admin-login-error" role="alert"></div>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="admin-login-email">Email</label>
+                    <input type="email" id="admin-login-email" name="email" required autocomplete="username" placeholder="admin@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="admin-login-password">Password</label>
+                    <input type="password" id="admin-login-password" name="password" required autocomplete="current-password" placeholder="••••••••">
+                </div>
+                <button type="submit" class="send-btn" id="admin-login-btn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
 
     <script>
         // ============================================
@@ -1930,6 +2096,7 @@
     <script src="config.js"></script>
     <script src="js/supabase-client.js"></script>
     <script src="js/media-service.js"></script>
+    <script src="js/admin-login.js"></script>
     <script src="js/portfolio-loader.js"></script>
 
 </body>

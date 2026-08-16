@@ -36,44 +36,6 @@
     <script src="../config.js"></script>
     <script src="../js/supabase-client.js"></script>
     <script src="../js/media-service.js"></script>
-    <script>
-        (async function () {
-            const form = document.getElementById('login-form');
-            const errorMsg = document.getElementById('error-msg');
-            const loginBtn = document.getElementById('login-btn');
-
-            if (!window.PortfolioDB?.isConfigured()) {
-                errorMsg.textContent = 'Supabase is not configured. Copy config.example.js to config.js and add your credentials. See SETUP.md.';
-                errorMsg.classList.add('show');
-                loginBtn.disabled = true;
-                return;
-            }
-
-            // Always clear any persisted session so /admin/ requires manual login
-            try {
-                await MediaService.signOut();
-            } catch (_) { /* no active session to clear */ }
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                errorMsg.classList.remove('show');
-                loginBtn.disabled = true;
-                loginBtn.textContent = 'Signing in...';
-
-                try {
-                    await MediaService.signIn(
-                        document.getElementById('email').value.trim(),
-                        document.getElementById('password').value
-                    );
-                    window.location.href = 'dashboard.html';
-                } catch (err) {
-                    errorMsg.textContent = err.message || 'Login failed. Check your credentials.';
-                    errorMsg.classList.add('show');
-                    loginBtn.disabled = false;
-                    loginBtn.textContent = 'Sign In';
-                }
-            });
-        })();
-    </script>
+    <script src="../js/admin-login.js"></script>
 </body>
 </html>
