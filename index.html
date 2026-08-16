@@ -546,6 +546,270 @@
             display: none;
         }
 
+        /* INFO SECTION */
+        .info-section {
+            padding: 100px 7%;
+            background: linear-gradient(135deg, rgba(214, 168, 79, 0.04) 0%, transparent 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(214, 168, 79, 0.08), transparent 45%),
+                radial-gradient(circle at 80% 20%, rgba(214, 168, 79, 0.05), transparent 40%);
+            pointer-events: none;
+        }
+
+        .info-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #info .section-title {
+            margin-bottom: 70px;
+        }
+
+        #info .section-title h2 .accent-gold {
+            color: var(--gold);
+        }
+
+        .info-content {
+            margin-bottom: 80px;
+        }
+
+        .info-card-main {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(214, 168, 79, 0.25);
+            padding: 45px;
+            border-radius: 4px;
+            backdrop-filter: blur(12px);
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(214, 168, 79, 0.1), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .info-card-main .card-icon {
+            font-size: 48px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(214, 168, 79, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .info-card-main h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            color: var(--light-text);
+        }
+
+        .info-card-main p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: rgba(245, 245, 245, 0.85);
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .info-card-main .info-detail {
+            color: rgba(245, 245, 245, 0.78);
+            border-top: 1px solid rgba(214, 168, 79, 0.15);
+            padding-top: 18px;
+            margin-top: 18px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(214, 168, 79, 0.18);
+            padding: 35px;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .info-card:nth-child(1) { animation-delay: 0.1s; }
+        .info-card:nth-child(2) { animation-delay: 0.15s; }
+        .info-card:nth-child(3) { animation-delay: 0.2s; }
+        .info-card:nth-child(4) { animation-delay: 0.25s; }
+        .info-card:nth-child(5) { animation-delay: 0.3s; }
+        .info-card:nth-child(6) { animation-delay: 0.35s; }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(214, 168, 79, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .info-card:hover::before {
+            left: 100%;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(214, 168, 79, 0.35);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(214, 168, 79, 0.15);
+        }
+
+        .info-card .card-icon {
+            font-size: 36px;
+            color: var(--gold);
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover .card-icon {
+            transform: scale(1.15) rotate(8deg);
+        }
+
+        .info-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+            color: var(--light-text);
+        }
+
+        .info-card p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--secondary-text);
+            margin: 0;
+        }
+
+        .info-features {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(214, 168, 79, 0.2);
+            padding: 50px;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-features::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(214, 168, 79, 0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .info-features h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+            color: var(--light-text);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+            border-left: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .features-list li:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(8px);
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            background: rgba(214, 168, 79, 0.2);
+            border-radius: 50%;
+            color: var(--gold);
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .features-list li:hover .feature-icon {
+            background: rgba(214, 168, 79, 0.35);
+            transform: scale(1.2);
+        }
+
+        .feature-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(245, 245, 245, 0.82);
+            transition: color 0.3s ease;
+        }
+
+        .features-list li:hover .feature-text {
+            color: var(--light-text);
+        }
+
         /* ABOUT */
         .about {
             display: grid;
@@ -1149,6 +1413,23 @@
             .photo {
                 margin-bottom: 18px;
             }
+
+            /* INFO SECTION RESPONSIVE */
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-card-main {
+                padding: 40px;
+            }
+
+            .info-card {
+                padding: 30px;
+            }
+
+            .info-features {
+                padding: 40px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1253,6 +1534,52 @@
                 font-size: 36px;
             }
 
+            /* INFO SECTION RESPONSIVE */
+            .info-card-main {
+                padding: 35px;
+            }
+
+            .info-card-main h3 {
+                font-size: 26px;
+            }
+
+            .info-card-main .card-icon {
+                font-size: 40px;
+            }
+
+            .info-grid {
+                gap: 24px;
+            }
+
+            .info-card {
+                padding: 28px;
+            }
+
+            .info-card h4 {
+                font-size: 18px;
+            }
+
+            .info-card .card-icon {
+                font-size: 32px;
+            }
+
+            .info-features {
+                padding: 40px;
+            }
+
+            .info-features h3 {
+                font-size: 26px;
+                margin-bottom: 28px;
+            }
+
+            .features-list {
+                gap: 18px;
+            }
+
+            .features-list li {
+                padding: 14px;
+            }
+
             .contact h2 {
                 font-size: 36px;
             }
@@ -1303,6 +1630,76 @@
 
             .hero {
                 padding: 120px 5% 55px;
+            }
+
+            /* INFO SECTION RESPONSIVE */
+            .info-card-main {
+                padding: 25px;
+            }
+
+            .info-card-main h3 {
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+
+            .info-card-main .card-icon {
+                font-size: 36px;
+                margin-bottom: 18px;
+            }
+
+            .info-card-main p {
+                font-size: 14px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .info-card {
+                padding: 22px;
+            }
+
+            .info-card h4 {
+                font-size: 16px;
+            }
+
+            .info-card p {
+                font-size: 13px;
+            }
+
+            .info-card .card-icon {
+                font-size: 28px;
+            }
+
+            .info-features {
+                padding: 30px;
+            }
+
+            .info-features h3 {
+                font-size: 22px;
+                margin-bottom: 24px;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .features-list li {
+                padding: 12px;
+                gap: 14px;
+            }
+
+            .feature-icon {
+                width: 20px;
+                height: 20px;
+                min-width: 20px;
+                font-size: 10px;
+            }
+
+            .feature-text {
+                font-size: 13px;
             }
 
             .hero-content {
@@ -1450,6 +1847,7 @@
 
         <ul>
             <li><a href="#home">HOME</a></li>
+            <li><a href="#info">INFO</a></li>
             <li class="nav-item">
                 <a href="#portfolio">PORTFOLIO</a>
                 <ul class="dropdown-menu" aria-label="Portfolio menu">
@@ -1580,6 +1978,120 @@
                     <span class="photo-tag">Landscape</span>
                     <span class="photo-title">Night Drift</span>
                 </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFO -->
+    <section id="info" class="info-section">
+
+        <div class="info-container">
+
+            <div class="section-title">
+                <p>DISCOVER</p>
+                <h2>Website <span class="accent-gold">Information</span></h2>
+            </div>
+
+            <div class="info-content">
+
+                <div class="info-card info-card-main">
+                    <div class="card-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>About This Portfolio</h3>
+                    <p>
+                        Welcome to Vivek Kumthe's professional photography portfolio. This platform showcases curated work spanning portraits, events, nature, and creative visual storytelling. Each photograph is a carefully composed moment, captured with precision and presented with intentionality.
+                    </p>
+                    <p class="info-detail">
+                        Whether you're looking to collaborate, book a session, or simply explore contemporary cinematic photography, you'll find a collection that reflects passion, technical excellence, and a deep understanding of light, emotion, and composition.
+                    </p>
+                </div>
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4>Premium Design</h4>
+                        <p>Crafted with attention to detail, featuring a dark cinematic aesthetic with gold accents that enhance the visual experience while keeping focus on the photography.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h4>Fully Responsive</h4>
+                        <p>Seamlessly designed for desktop, tablet, and mobile devices. Every photograph and section adapts beautifully to your screen size for optimal viewing.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h4>Portfolio Categories</h4>
+                        <p>Explore diverse collections: Portraits capturing raw emotion, Events documenting special moments, and Nature showcasing landscapes and wildlife in their purest form.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h4>Interactive Gallery</h4>
+                        <p>Engaging photo galleries with smooth filtering, click-to-expand lightbox viewer, and intuitive navigation. Every interaction is optimized for discovery and engagement.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Professional Services</h4>
+                        <p>Available for bookings, commissions, and collaborative projects. From editorial shoots to personal sessions, every project receives dedicated attention and artistic vision.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Get In Touch</h4>
+                        <p>Connect via Instagram, WhatsApp, or email. Whether you have questions about the work, want to schedule a consultation, or discuss collaboration opportunities, reach out anytime.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="info-features">
+                <h3>Why Choose This Portfolio?</h3>
+                <ul class="features-list">
+                    <li>
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Curated collection of high-quality, professional photography</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Cinematic aesthetic with meticulous attention to light and composition</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Multiple categories covering diverse photography styles and subjects</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Optimized for all devices with smooth, intuitive navigation</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Direct connection to book sessions or discuss projects</span>
+                    </li>
+                    <li>
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Continuously updated with fresh work and new perspectives</span>
+                    </li>
+                </ul>
             </div>
 
         </div>
