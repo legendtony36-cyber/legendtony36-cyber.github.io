@@ -1,0 +1,13 @@
+# Supabase credentials — use config.example.js as template
+# The anon key is safe for frontend; only service-role keys must stay private
+# config.js
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+config.js

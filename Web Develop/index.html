@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vivek Kumthe - Professional Photography Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --gold: #d6a84f;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --light-text: #f5f5f5;
+            --secondary-text: #bbb;
+            --accent: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(214, 168, 79, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 7%;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            display: none;
+            min-width: 180px;
+            padding: 14px 0;
+            background: rgba(15, 15, 15, 0.96);
+            border: 1px solid rgba(214, 168, 79, 0.22);
+            border-radius: 12px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+            list-style: none;
+            z-index: 1100;
+            pointer-events: auto;
+        }
+
+        .nav-item:hover .dropdown-menu,
+        .nav-item:focus-within .dropdown-menu,
+        .dropdown-menu:hover {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 18px;
+            color: var(--light-text);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(214, 168, 79, 0.08);
+            color: var(--gold);
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 8% 90px;
+            background:
+                linear-gradient(120deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.82) 100%),
+                url("https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=2000&q=85");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(197, 30, 30, 0.26), transparent 22%),
+                radial-gradient(circle at 80% 25%, rgba(214, 168, 79, 0.2), transparent 18%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55));
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            bottom: 8%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(214, 168, 79, 0.8), transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 780px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            animation: fadeInUp 1.2s ease-out 0.1s both;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 46px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 7vw, 110px);
+            line-height: 0.96;
+            letter-spacing: 5px;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            animation: fadeInUp 1.2s ease-out 0.2s both;
+        }
+
+        .hero h1 .accent {
+            color: var(--gold);
+        }
+
+        .hero-brand {
+            font-size: clamp(12px, 1.8vw, 22px);
+            letter-spacing: 1.25rem;
+            color: rgba(255, 255, 255, 0.18);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: -8px;
+            animation: fadeInUp 1.2s ease-out 0.25s both;
+        }
+
+        .hero h2 {
+            max-width: 640px;
+            font-size: clamp(18px, 2.1vw, 30px);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1.5px;
+            line-height: 1.5;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+        }
+
+        .hero p {
+            max-width: 620px;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.9;
+            font-size: 16px;
+            animation: fadeInUp 1.2s ease-out 0.4s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, var(--gold), #b77d1f);
+            color: var(--dark-bg);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 0;
+            letter-spacing: 2px;
+            font-size: 12px;
+            text-transform: uppercase;
+            border: 1px solid rgba(214, 168, 79, 0.75);
+            box-shadow: 0 18px 35px rgba(214, 168, 79, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 40px rgba(214, 168, 79, 0.36);
+            filter: brightness(1.04);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 400;
+        }
+
+        /* PORTFOLIO */
+        #portfolio {
+            background: linear-gradient(180deg, rgba(214, 168, 79, 0.03) 0%, rgba(10, 10, 10, 0) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #portfolio::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(214, 168, 79, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 44px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .filter-btn {
+            padding: 11px 22px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(214, 168, 79, 0.45);
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--gold), #c28b2d);
+            color: var(--dark-bg);
+            border-color: transparent;
+            box-shadow: 0 12px 28px rgba(214, 168, 79, 0.22);
+            transform: translateY(-1px);
+        }
+
+        /* GALLERY */
+        .gallery {
+            columns: 3 260px;
+            column-gap: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        a.photo,
+        a.photo-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .photo {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin: 0 0 22px;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            aspect-ratio: 4 / 5;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(214, 168, 79, 0.15);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+            break-inside: avoid;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .photo:nth-child(2n) {
+            aspect-ratio: 5 / 4;
+        }
+
+        .photo:nth-child(3n) {
+            aspect-ratio: 3 / 4;
+        }
+
+        .photo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.44));
+            z-index: 1;
+            transition: opacity 0.35s ease;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            filter: saturate(1.08) contrast(1.05);
+            transform: scale(1.01);
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 10, 10, 0.18);
+            opacity: 0;
+            transition: opacity 0.35s ease, background 0.35s ease;
+        }
+
+        .photo-overlay i {
+            font-size: 26px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 20px rgba(214, 168, 79, 0.5);
+            transform: scale(0.82);
+            transition: transform 0.35s ease;
+        }
+
+        .photo-meta {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 18px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: all 0.35s ease;
+        }
+
+        .photo-tag {
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .photo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 2vw, 28px);
+            line-height: 1.1;
+            letter-spacing: 1px;
+            color: #f7f1e3;
+        }
+
+        .photo:hover {
+            transform: translateY(-6px);
+            border-color: rgba(214, 168, 79, 0.5);
+            box-shadow: 0 24px 42px rgba(0, 0, 0, 0.25);
+        }
+
+        .photo:hover img {
+            transform: scale(1.08);
+            filter: saturate(1.15) contrast(1.08);
+        }
+
+        .photo:hover::before {
+            opacity: 0.9;
+        }
+
+        .photo:hover .photo-overlay {
+            opacity: 1;
+            background: rgba(10, 10, 10, 0.12);
+        }
+
+        .photo:hover .photo-overlay i {
+            transform: scale(1);
+        }
+
+        .photo:hover .photo-meta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .photo[data-category] {
+            transition: all 0.4s ease;
+        }
+
+        .photo.hidden {
+            display: none;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1.05fr 1.35fr;
+            gap: clamp(40px, 4vw, 80px);
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            width: min(460px, 100%);
+            margin: 0 auto;
+            padding: 12px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(197, 34, 34, 0.95);
+            box-shadow: 0 0 0 1px rgba(197, 34, 34, 0.35), 0 0 30px rgba(197, 34, 34, 0.22), 0 20px 50px rgba(0, 0, 0, 0.35);
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(197, 34, 34, 0.7);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .about img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: saturate(1.08) contrast(1.03);
+        }
+
+        .about-image-wrapper:hover img {
+            transform: scale(1.02);
+            filter: saturate(1.12) contrast(1.06);
+        }
+
+        .about-content {
+            max-width: 620px;
+        }
+
+        .about-content .subtitle {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 4vw, 54px);
+            margin-bottom: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .about-content h2 .lens {
+            color: #b81d1d;
+        }
+
+        .about-divider {
+            width: 88px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), rgba(214, 168, 79, 0.24));
+            position: relative;
+            margin: 0 0 26px;
+        }
+
+        .about-divider::before,
+        .about-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        .about-divider::before {
+            left: 0;
+        }
+
+        .about-divider::after {
+            right: 0;
+        }
+
+        .about-content p {
+            color: rgba(245, 245, 245, 0.82);
+            line-height: 1.9;
+            margin-bottom: 18px;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .about-signature {
+            margin-top: 26px;
+        }
+
+        .about-signature .name {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: clamp(32px, 3vw, 42px);
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .about-signature .role {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        /* SKILL CARDS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(214, 168, 79, 0.2);
+            padding: 30px;
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(214, 168, 79, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(214, 168, 79, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(214, 168, 79, 0.15);
+        }
+
+        .skill-icon {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .skill-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .skill-card p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--secondary-text);
+            margin: 0;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(214, 168, 79, 0.05) 0%, transparent 100%);
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .contact .subtitle {
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .contact-intro {
+            color: var(--secondary-text);
+            margin-bottom: 50px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            padding: 20px;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.02);
+            min-width: 200px;
+        }
+
+        .contact-link:hover {
+            background: rgba(214, 168, 79, 0.1);
+            border-color: rgba(214, 168, 79, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.2) rotate(-5deg);
+            color: var(--accent);
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .contact-link:hover .contact-value {
+            color: var(--gold);
+        }
+
+        /* CONTACT FORM */
+        .contact-form-wrapper {
+            max-width: 600px;
+            margin: 60px auto 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border: 1px solid rgba(214, 168, 79, 0.2);
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            animation: slideInUp 0.6s ease-out backwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            color: var(--light-text);
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(214, 168, 79, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            border: none;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(214, 168, 79, 0.4);
+        }
+
+        .send-btn:hover::before {
+            left: 100%;
+        }
+
+        .social {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social a {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social a:hover {
+            background: var(--gold);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(214, 168, 79, 0.3);
+        }
+
+        /* FULLSCREEN VIEWER */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: var(--gold);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(214, 168, 79, 0.2);
+            color: var(--gold);
+            border: none;
+            font-size: 30px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(214, 168, 79, 0.4);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* FOOTER */
+        /* CONTACT FORM */
+        .form-error.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 7%;
+            background: var(--darker-bg);
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid rgba(214, 168, 79, 0.1);
+            letter-spacing: 1px;
+        }
+
+        /* MOBILE MENU */
+        nav ul.mobile-active {
+            display: flex !important;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 30px 7%;
+            gap: 20px;
+            border-top: 1px solid rgba(214, 168, 79, 0.15);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(214, 168, 79, 0.7);
+        }
+
+        /* MOBILE */
+        @media (max-width: 1024px) {
+            .gallery {
+                columns: 2 240px;
+            }
+
+            .photo {
+                margin-bottom: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 130px 5% 70px;
+            }
+
+            .hero-content {
+                gap: 14px;
+            }
+
+            .hero-badge {
+                letter-spacing: 2px;
+                font-size: 10px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+                letter-spacing: 3px;
+            }
+
+            .hero-brand {
+                letter-spacing: 0.8rem;
+                margin-top: -4px;
+            }
+
+            .hero h2 {
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-actions {
+                margin-top: 6px;
+            }
+
+            .gallery {
+                columns: 1;
+            }
+
+            .photo {
+                margin-bottom: 16px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image-wrapper {
+                max-width: 340px;
+                padding: 12px;
+            }
+
+            .about-content {
+                max-width: 100%;
+            }
+
+            .about-content p {
+                font-size: 14px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-link {
+                min-width: 100%;
+            }
+
+            .contact-form-wrapper {
+                padding: 30px;
+                margin: 50px auto 0;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 36px;
+            }
+
+            .contact h2 {
+                font-size: 36px;
+            }
+
+            .portfolio-filters {
+                gap: 12px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
+
+            .social {
+                gap: 20px;
+            }
+
+            .social a {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .lightbox-nav {
+                padding: 10px 15px;
+                font-size: 24px;
+            }
+
+            .lightbox-close {
+                font-size: 30px;
+                top: 15px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero {
+                padding: 120px 5% 55px;
+            }
+
+            .hero-content {
+                gap: 12px;
+            }
+
+            .hero-badge {
+                letter-spacing: 1.5px;
+                font-size: 9px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+                letter-spacing: 2px;
+            }
+
+            .hero-brand {
+                font-size: 12px;
+                letter-spacing: 0.5rem;
+            }
+
+            .hero h2 {
+                font-size: 15px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 11px;
+                letter-spacing: 1.5px;
+            }
+
+            .gallery {
+                gap: 15px;
+            }
+
+            .photo {
+                height: 250px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .contact h2 {
+                font-size: 28px;
+            }
+
+            .portfolio-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+
+            .about-content .subtitle {
+                font-size: 12px;
+            }
+
+            .about p {
+                font-size: 14px;
+            }
+
+            .skill-card {
+                padding: 20px;
+            }
+
+            .skill-icon {
+                font-size: 32px;
+            }
+
+            .skill-card h3 {
+                font-size: 16px;
+            }
+
+            .skill-card p {
+                font-size: 12px;
+            }
+
+            .contact-links {
+                gap: 15px;
+            }
+
+            .contact-link {
+                padding: 15px;
+                min-width: 100%;
+            }
+
+            .contact-icon {
+                font-size: 28px;
+            }
+
+            .contact-value {
+                font-size: 14px;
+            }
+
+            .contact-form-wrapper {
+                padding: 25px;
+                margin: 40px auto 0;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            .form-group textarea {
+                min-height: 100px;
+            }
+
+            .send-btn {
+                padding: 14px;
+                font-size: 12px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="logo">
+            VIVEK<span>KUMTHE</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li class="nav-item">
+                <a href="#portfolio">PORTFOLIO</a>
+                <ul class="dropdown-menu" aria-label="Portfolio menu">
+                    <li><a href="#portfolio">Portraits</a></li>
+                    <li><a href="#portfolio">Events</a></li>
+                    <li><a href="nature.html">Nature 🌿</a></li>
+                </ul>
+            </li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+
+    <!-- HOME / HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">Photographer • Visual Storyteller</span>
+
+            <h1>VIVEK <span class="accent">KUMTHE</span></h1>
+
+            <div class="hero-brand">LUCIFFER</div>
+            <div class="nature-title">Nature Photography</div>
+            <h2>Framing emotion, light, and unforgettable moments.</h2>
+
+            <p>
+                Capturing cinematic portraits, intimate stories, and the subtle details that make every frame feel lived in and alive.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn">
+                    EXPLORE PORTFOLIO
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+
+        <div class="section-title">
+            <p>MY WORK</p>
+            <h2>PORTFOLIO</h2>
+        </div>
+
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">ALL WORKS</button>
+            <button class="filter-btn" data-filter="portrait">PORTRAIT</button>
+            <button class="filter-btn" data-filter="landscape">LANDSCAPE</button>
+            <button class="filter-btn" data-filter="fashion">FASHION</button>
+            <button class="filter-btn" data-filter="event">EVENT</button>
+        </div>
+
+        <div class="gallery">
+
+            <a href="nature.html" class="photo photo-link" data-category="landscape" id="nature-portfolio-card">
+                <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85" alt="Nature Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+                <div class="photo-meta">
+                    <span class="photo-tag">Nature</span>
+                    <span class="photo-title">Nature</span>
+                </div>
+            </a>
+
+            <div class="photo" data-category="fashion">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85" alt="Fashion Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="photo-meta">
+                    <span class="photo-tag">Fashion</span>
+                    <span class="photo-title">Velvet Frame</span>
+                </div>
+            </div>
+
+            <div class="photo" data-category="landscape">
+                <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85" alt="Landscape Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="photo-meta">
+                    <span class="photo-tag">Landscape</span>
+                    <span class="photo-title">Golden Horizon</span>
+                </div>
+            </div>
+
+            <div class="photo" data-category="event">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85" alt="Event Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="photo-meta">
+                    <span class="photo-tag">Event</span>
+                    <span class="photo-title">Afterglow</span>
+                </div>
+            </div>
+
+            <div class="photo" data-category="portrait">
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85" alt="Portrait Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="photo-meta">
+                    <span class="photo-tag">Portrait</span>
+                    <span class="photo-title">Stillness</span>
+                </div>
+            </div>
+
+            <div class="photo" data-category="landscape">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1000&q=85" alt="Landscape Photography">
+                <div class="photo-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="photo-meta">
+                    <span class="photo-tag">Landscape</span>
+                    <span class="photo-title">Night Drift</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="about">
+
+            <div class="about-image-wrapper">
+                <img src="images/profile.jpg" alt="Luciffer photographer portrait">
+            </div>
+
+            <div class="about-content">
+
+                <p class="subtitle">About Me</p>
+
+                <h2>Behind The <span class="lens">Lens</span></h2>
+
+                <div class="about-divider" aria-hidden="true"></div>
+
+                <p>
+                    I don't simply capture photographs — I preserve the atmosphere, emotion and stories hidden inside a moment. Photography is my way of transforming fleeting moments into visual experiences that can be revisited for years.
+                </p>
+
+                <p>
+                    My approach combines light, composition, perspective and timing to create images that feel authentic, expressive and memorable. From intimate portraits to landscapes, events and creative visual stories, I look for the details that make every frame unique.
+                </p>
+
+                <p>
+                    For me, photography is not just about what the camera sees. It is about how a moment feels.
+                </p>
+
+                <div class="about-signature">
+                    <span class="name">Luciffer</span>
+                    <span class="role">Photographer</span>
+                </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Creative Vision</h3>
+                        <p>Translating creative concepts into compelling visual narratives that resonate and inspire.</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Visual Storytelling</h3>
+                        <p>Weaving narratives through images that capture emotions and tell deeper stories.</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3>Composition & Lighting</h3>
+                        <p>Mastering light and composition to create images that are visually striking and emotionally powerful.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2>LET'S CREATE TOGETHER</h2>
+
+        <p class="subtitle">GET IN TOUCH</p>
+
+        <div class="contact-intro">
+            <p>Ready to bring your vision to life? Let's collaborate and create something extraordinary.</p>
+        </div>
+
+        <div class="contact-links">
+            <a href="https://www.instagram.com/Luciffer_369K/" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <div class="contact-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="contact-label">INSTAGRAM</div>
+                <div class="contact-value">@Luciffer_369K</div>
+            </a>
+
+            <a href="https://wa.me/919518364554" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="contact-label">WHATSAPP</div>
+                <div class="contact-value">+91 9518364554</div>
+            </a>
+
+            <a href="mailto:vivekumthe@gmail.com" class="contact-link">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-label">EMAIL</div>
+                <div class="contact-value">vivekumthe@gmail.com</div>
+            </a>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-wrapper">
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        name="subject" 
+                        placeholder="What would you like to discuss?"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Tell me about your project or inquiry..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="send-btn">SEND MESSAGE</button>
+            </form>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Luciffer Photography. All Rights Reserved.
+        <a href="admin/" style="display:block;margin-top:8px;font-size:11px;color:#444;letter-spacing:1px;">Admin</a>
+    </footer>
+
+    <!-- FULLSCREEN IMAGE VIEWER -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="Full size image">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</button>
+            <div class="lightbox-counter">
+                <span id="current-image">1</span> / <span id="total-images">6</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // ============================================
+        // MOBILE NAVIGATION
+        // ============================================
+        const hamburger = document.getElementById('hamburger');
+        const navList = document.querySelector('nav ul');
+        const navLinks = document.querySelectorAll('nav a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navList.classList.toggle('mobile-active');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navList.classList.remove('mobile-active');
+            });
+        });
+
+        // Close menu when scrolling
+        window.addEventListener('scroll', () => {
+            hamburger.classList.remove('active');
+            navList.classList.remove('mobile-active');
+        });
+
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // PORTFOLIO FILTER
+        // ============================================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function applyFilter(filter) {
+            const photos = document.querySelectorAll('.gallery .photo');
+            photos.forEach(photo => {
+                if (filter === 'all') {
+                    photo.classList.remove('hidden');
+                } else {
+                    const category = photo.getAttribute('data-category');
+                    photo.classList.toggle('hidden', category !== filter);
+                }
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilter(btn.getAttribute('data-filter'));
+            });
+        });
+
+        // ============================================
+        // LIGHTBOX FUNCTIONALITY
+        // ============================================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.querySelector('.lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        let currentImageIndex = 0;
+        let allPhotos = [];
+
+        function getVisiblePhotos() {
+            return Array.from(document.querySelectorAll('.gallery .photo')).filter(
+                photo => !photo.classList.contains('hidden') && !photo.classList.contains('photo-link')
+            );
+        }
+
+        function bindLightbox() {
+            getVisiblePhotos().forEach((photo) => {
+                if (photo.dataset.lightboxBound) return;
+                photo.dataset.lightboxBound = 'true';
+                photo.addEventListener('click', () => {
+                    allPhotos = getVisiblePhotos();
+                    currentImageIndex = allPhotos.indexOf(photo);
+                    openLightbox();
+                });
+            });
+        }
+
+        function openLightbox() {
+            const currentPhoto = allPhotos[currentImageIndex];
+            const img = currentPhoto.querySelector('img');
+            const fullUrl = currentPhoto.getAttribute('data-full-url');
+            lightboxImg.src = fullUrl || img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateLightboxCounter();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % allPhotos.length;
+            openLightbox();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + allPhotos.length) % allPhotos.length;
+            openLightbox();
+        }
+
+        function updateLightboxCounter() {
+            document.getElementById('current-image').textContent = currentImageIndex + 1;
+            document.getElementById('total-images').textContent = allPhotos.length;
+        }
+
+        bindLightbox();
+        window.addEventListener('portfolio-loaded', bindLightbox);
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevImage);
+        lightboxNext.addEventListener('click', nextImage);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ============================================
+        // YEAR AUTO-UPDATE
+        // ============================================
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // ============================================
+        // EMAIL FORM HANDLER
+        // ============================================
+        const emailForm = document.getElementById('emailForm');
+        
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validate fields
+            if (!subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Create mailto link with subject and body
+            const mailtoLink = `mailto:vivekumthe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Clear form after a brief delay
+            setTimeout(() => {
+                emailForm.reset();
+            }, 500);
+        });
+
+    </script>
+
+    <!-- Supabase dynamic portfolio -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/media-service.js"></script>
+    <script src="js/portfolio-loader.js"></script>
+
+</body>
+</html>

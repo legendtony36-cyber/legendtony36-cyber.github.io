@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" role="img" aria-labelledby="title desc">
+  <title id="title">Valley sky</title>
+  <desc id="desc">Abstract valley scene with rolling hills and a bright open sky.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#dfeff6"/>
+      <stop offset="35%" stop-color="#b8d7ec"/>
+      <stop offset="64%" stop-color="#7eaec0"/>
+      <stop offset="100%" stop-color="#1d3743"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1400" fill="url(#sky)"/>
+  <circle cx="920" cy="210" r="120" fill="#f7fbff" opacity="0.8"/>
+  <path d="M0 710C110 642 170 635 260 680C330 710 390 760 455 750C540 736 630 650 720 642C800 635 875 712 970 720C1060 728 1140 680 1200 650V1400H0Z" fill="#234a4d"/>
+  <path d="M0 830C110 770 210 780 303 825C365 856 425 892 500 870C572 849 650 790 726 790C820 790 918 858 997 862C1072 866 1138 835 1200 810V1400H0Z" fill="#1d3c44" opacity="0.9"/>
+  <path d="M0 980C110 940 170 940 252 965C334 990 420 1038 520 1032C625 1026 720 960 815 956C905 952 1000 1002 1095 1018C1142 1026 1175 1026 1200 1022V1400H0Z" fill="#102c34"/>
+  <path d="M0 1040C157 1015 230 1060 345 1088C450 1114 600 1108 725 1080C850 1052 1000 1018 1200 1048V1400H0Z" fill="#0b1d22" opacity="0.95"/>
+</svg>

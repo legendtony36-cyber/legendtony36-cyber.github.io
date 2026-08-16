@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" role="img" aria-labelledby="title desc">
+  <title id="title">Dawn lake</title>
+  <desc id="desc">Abstract lake dawn scenery with mountain silhouettes and calm water reflections.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#d9eff9"/>
+      <stop offset="25%" stop-color="#a7d2df"/>
+      <stop offset="55%" stop-color="#6c8ea0"/>
+      <stop offset="100%" stop-color="#112b38"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#dfeef4"/>
+      <stop offset="32%" stop-color="#7aaab9"/>
+      <stop offset="100%" stop-color="#122d39"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1400" fill="url(#sky)"/>
+  <circle cx="930" cy="210" r="110" fill="#f5fbff" opacity="0.6"/>
+  <path d="M0 760L150 630L230 700L360 520L520 760L700 560L850 760L1000 600L1200 740V1400H0Z" fill="#152d39"/>
+  <path d="M0 890C130 848 250 840 390 880C540 922 700 940 850 890C990 842 1090 835 1200 860V1400H0Z" fill="url(#lake)"/>
+  <path d="M0 1038C120 1015 210 1010 310 1038C420 1069 560 1088 700 1062C835 1038 960 999 1200 1048V1400H0Z" fill="#0a1f28" opacity="0.9"/>
+  <path d="M0 1110C180 1085 260 1105 350 1130C470 1165 620 1176 775 1140C930 1102 1040 1092 1200 1120V1400H0Z" fill="#07181d" opacity="0.96"/>
+  <g opacity="0.7">
+    <path d="M210 960L290 860L370 960Z" fill="#c0dfe8" opacity="0.7"/>
+    <path d="M560 980L635 860L700 980Z" fill="#bfdfe8" opacity="0.7"/>
+    <path d="M850 975L930 850L1015 975Z" fill="#c3dee8" opacity="0.7"/>
+  </g>
+</svg>
