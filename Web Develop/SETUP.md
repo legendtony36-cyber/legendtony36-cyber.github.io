@@ -43,7 +43,7 @@ No server required. Your PC does not need to stay running.
 
 1. In Supabase, go to **Project Settings → API**.
 2. Copy your **Project URL** and **anon public** key.
-3. Open `config.js` in this project and replace the placeholders:
+3. Open `config.js` and set your **Project URL** and **anon/publishable** key (safe to commit — public credentials only):
 
 ```javascript
 window.SUPABASE_CONFIG = {
@@ -52,7 +52,7 @@ window.SUPABASE_CONFIG = {
 };
 ```
 
-> **Important:** Only use the **anon** (public) key. Never put the **service_role** key in frontend code or commit it to GitHub.
+> **Important:** Only use the **anon** or **publishable** (public) key in `config.js`. This file is deployed to GitHub Pages. Never put the **service_role** key, secret key, or database password in frontend code.
 
 ---
 

@@ -14,8 +14,10 @@
             );
         }
         const { url, anonKey } = window.SUPABASE_CONFIG;
-        if (!url || url.includes('YOUR_PROJECT') || !anonKey || anonKey.includes('YOUR_SUPABASE')) {
-            throw new Error('Supabase credentials are not set. Edit config.js with your project URL and anon key.');
+        const isPlaceholderUrl = !url || url.includes('YOUR_PROJECT');
+        const isPlaceholderKey = !anonKey || anonKey.includes('YOUR_SUPABASE') || anonKey.includes('YOUR_PROJECT');
+        if (isPlaceholderUrl || isPlaceholderKey) {
+            throw new Error('Supabase credentials are not set. Edit config.js with your project URL and anon/publishable key.');
         }
         return { url, anonKey };
     }

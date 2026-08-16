@@ -21,7 +21,7 @@ Quick start:
 
 1. Create a Supabase project
 2. Run `supabase/schema.sql` in the SQL Editor
-3. Copy `config.example.js` → `config.js` and add your Supabase URL + anon key
+3. Ensure `config.js` contains your Supabase URL and anon/publishable key (this file is committed for GitHub Pages)
 4. Create an admin user in Supabase Auth and grant admin role (see SETUP.md)
 5. Deploy to GitHub Pages
 

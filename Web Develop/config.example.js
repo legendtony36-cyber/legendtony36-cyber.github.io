@@ -1,10 +1,10 @@
-// Copy this file to config.js and fill in your Supabase credentials.
-// config.js is gitignored — never commit your actual credentials.
+// Supabase public configuration for GitHub Pages and local development.
+// Safe to commit: contains only the Project URL and public anon/publishable key.
+// NEVER put the service-role key, secret key, or database password in this file.
 //
 // Get these from: Supabase Dashboard → Project Settings → API
-// Use the "anon" / "public" key only. NEVER put the service-role key here.
 
 window.SUPABASE_CONFIG = {
     url: 'https://YOUR_PROJECT_ID.supabase.co',
-    anonKey: 'YOUR_SUPABASE_ANON_KEY'
+    anonKey: 'YOUR_SUPABASE_ANON_OR_PUBLISHABLE_KEY'
 };
